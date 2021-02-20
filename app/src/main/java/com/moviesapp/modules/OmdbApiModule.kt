@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 const val TIME_OUT: Long = 30
-const val BASE_URL = "https://api.themoviedb.org/3/"
+const val BASE_URL = "https://www.omdbapi.com/"
 
 val omdbApiModule = module {
     factory { provideHttpLoggingInterceptor() }
