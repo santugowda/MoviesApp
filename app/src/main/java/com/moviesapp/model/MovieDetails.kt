@@ -1,4 +1,4 @@
-package com.moviesapp.data.model
+package com.moviesapp.model
 
 import android.media.Rating
 import com.google.gson.annotations.Expose

@@ -1,4 +1,4 @@
-package com.moviesapp.data.base
+package com.moviesapp.network.base
 
 enum class Status {
     SUCCESS,
