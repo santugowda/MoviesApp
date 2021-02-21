@@ -18,4 +18,5 @@
     <string name="year">Released Year :</string>
     <string name="plot">Plot :</string>
     <string name="error_message">Please try again :</string>
+    <string name="search_title">Search Movie</string>
 </resources>

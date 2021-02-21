@@ -7,19 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviesapp.R
-import com.moviesapp.model.Search
 import com.moviesapp.network.base.NetworkResponse
-import com.moviesapp.ui.adapters.MovieSearchListAdapter
 import com.moviesapp.viewmodel.MovieDetailsViewModel
-import com.moviesapp.viewmodel.MovieSearchListViewModel
 import kotlinx.android.synthetic.main.fragment_movie_details.*
-import kotlinx.android.synthetic.main.fragment_movies_list.*
-import kotlinx.android.synthetic.main.movie_list_item.view.*
 
 
 class MoviesDetailedFragment : Fragment() {
