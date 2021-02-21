@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@android:color/white"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -52,8 +52,16 @@
                     android:padding="@dimen/small_margin"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/small_font" />
-
             </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/favorite_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="#00ffffff"
+                android:src="@android:drawable/btn_star"
+                />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>

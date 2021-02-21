@@ -54,6 +54,9 @@ class MoviesSearchListFragment : Fragment(), MovieSearchEndlessAdapter.OnMovieSe
         searchStartView = view.findViewById(R.id.searchStartView)
         appBarView = view.findViewById(R.id.appBarView)
 
+        movieSearchListViewModel = ViewModelProvider(this).get(MovieSearchListViewModel::class.java)
+
+
         moviesViewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
         movieSearchEndlessAdapter = MovieSearchEndlessAdapter(arrayListOf(), this)
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
@@ -137,10 +140,10 @@ class MoviesSearchListFragment : Fragment(), MovieSearchEndlessAdapter.OnMovieSe
     }
 
     override fun onUserItemClick(movieSearch: Search) {
-        val directions =
-            MoviesSearchListFragmentDirections.actionMovieSearchListFragmentToMoviesDetailedFragment(
-                movieSearch.title
-            )
-        findNavController().navigate(directions)
+//        val directions =
+//            MoviesSearchListFragmentDirections.actionMovieSearchListFragmentToMoviesDetailedFragment(
+//                movieSearch.title
+//            )
+//        findNavController().navigate(directions)
     }
 }

@@ -9,12 +9,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieSearchDataSource : PageKeyedDataSource<Int, Search>() {
+class MovieSearchDataSource(private val movieSearch: String) : PageKeyedDataSource<Int, Search>() {
 
     val omdbApiServices = RetrofitClient.getClient(OmdbApi::class.java)
     private val FIRST_PAGE = 1
 
-    companion object{
+    companion object {
         const val PAGE_SIZE = 7
     }
 
@@ -22,31 +22,33 @@ class MovieSearchDataSource : PageKeyedDataSource<Int, Search>() {
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, Search>
     ) {
-        omdbApiServices.getSearchedMovies("star", FIRST_PAGE).enqueue(object : Callback<MovieSearch> {
-            override fun onFailure(call: Call<MovieSearch>, t: Throwable) {
+        omdbApiServices.getSearchedMovies(movieSearch, FIRST_PAGE)
+            .enqueue(object : Callback<MovieSearch> {
+                override fun onFailure(call: Call<MovieSearch>, t: Throwable) {
 
-            }
-
-            override fun onResponse(call: Call<MovieSearch>, response: Response<MovieSearch>) {
-                if(response.isSuccessful) {
-                    response.body()?.search?.let { callback.onResult(it, null, 2) }
                 }
-            }
 
-        })
+                override fun onResponse(call: Call<MovieSearch>, response: Response<MovieSearch>) {
+                    if (response.isSuccessful) {
+                        response.body()?.search?.let { callback.onResult(it, null, 2) }
+                    }
+                }
+
+            })
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Search>) {
-        omdbApiServices.getSearchedMovies("star", params.key).enqueue(object : Callback<MovieSearch> {
-            override fun onFailure(call: Call<MovieSearch>, t: Throwable) {
-            }
-
-            override fun onResponse(call: Call<MovieSearch>, response: Response<MovieSearch>) {
-                if(response.isSuccessful) {
-                    response.body()?.search?.let { callback.onResult(it, params.key + 1) }
+        omdbApiServices.getSearchedMovies(movieSearch, params.key)
+            .enqueue(object : Callback<MovieSearch> {
+                override fun onFailure(call: Call<MovieSearch>, t: Throwable) {
                 }
-            }
-        })
+
+                override fun onResponse(call: Call<MovieSearch>, response: Response<MovieSearch>) {
+                    if (response.isSuccessful) {
+                        response.body()?.search?.let { callback.onResult(it, params.key + 1) }
+                    }
+                }
+            })
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Search>) {

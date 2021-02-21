@@ -7,6 +7,7 @@ public class MoviesSharedPref extends SharedPrefsManager {
     private static MoviesSharedPref mInstance = null;
     private static final String MOVIES_CONFIG_PREFS = "AUTOLIST_CONFIG_PREFS";
     private static final String SEARCH_STRING = "SEARCH_STRING";
+    private static final String NEW_SEARCH = "NEW_SEARCH";
 
 
     public MoviesSharedPref(Context context) {
@@ -30,5 +31,13 @@ public class MoviesSharedPref extends SharedPrefsManager {
 
     public String getSearchedMovie() {
         return getStringPolicy(SEARCH_STRING, "Star");
+    }
+
+    public void newSearchQuery(boolean newSearch) {
+        setBooleanPolicy(NEW_SEARCH, newSearch);
+    }
+
+    public boolean didSearchHappen() {
+        return getBooleanPolicy(NEW_SEARCH, false);
     }
 }

@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/movieSearchListFragment">
+    app:startDestination="@id/moviesListFragment">
 
     <fragment
-        android:id="@+id/movieSearchListFragment"
-        android:name="com.moviesapp.ui.fragments.MoviesSearchListFragment"
+        android:id="@+id/moviesListFragment"
+        android:name="com.moviesapp.ui.fragments.MoviesListFragment"
         android:label="@string/movie_search_fragment_title"
         tools:layout="@layout/fragment_movies_list">
 
@@ -29,7 +29,7 @@
 
         <action
             android:id="@+id/action_moviesDetailedFragment_to_movieSearchListFragment"
-            app:destination="@id/movieSearchListFragment" />
+            app:destination="@id/moviesListFragment" />
     </fragment>
 
 </navigation>
