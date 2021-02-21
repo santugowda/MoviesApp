@@ -51,6 +51,10 @@ class MovieSearchListAdapter(private val onMovieSelected: OnMovieSelected) :
                         .into(imgPoster)
                 }
 
+//                favStar.setOnClickListener {
+//
+//                }
+
                 setOnClickListener {
                     onMovieSelected.onUserItemClick(movieSearch)
                 }
