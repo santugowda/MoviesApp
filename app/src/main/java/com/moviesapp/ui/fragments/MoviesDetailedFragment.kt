@@ -11,13 +11,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviesapp.R
 import com.moviesapp.network.base.NetworkResponse
-import com.moviesapp.viewmodel.MovieDetailsViewModel
+import com.moviesapp.viewmodel.MoviesViewModel
 import kotlinx.android.synthetic.main.fragment_movie_details.*
 
 
 class MoviesDetailedFragment : Fragment() {
 
-    private lateinit var movieDetailsViewModel: MovieDetailsViewModel
+    private lateinit var moviesViewModel: MoviesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,10 +29,10 @@ class MoviesDetailedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        movieDetailsViewModel = ViewModelProvider(this).get(MovieDetailsViewModel::class.java)
+        moviesViewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
         arguments?.let {
             val movieName: String = MoviesDetailedFragmentArgs.fromBundle(it).movieName
-            movieDetailsViewModel.getMovieDetails(movieName)
+            moviesViewModel.getMovieDetails(movieName)
                 .observe(viewLifecycleOwner, Observer { movieDetails ->
                     detailProgress.visibility = View.VISIBLE
                     when (movieDetails.status) {

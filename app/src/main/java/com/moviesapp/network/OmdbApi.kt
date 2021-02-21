@@ -12,7 +12,7 @@ interface OmdbApi {
 
     @GET("?apiKey=" + MovieConstants.API_KEY)
     fun getSearchedMovies(
-        @Query("s") search : String,
+        @Query("s") search : String?,
         @Query("page") page : Int
     ): Call<MovieSearch>
 
