@@ -82,6 +82,7 @@ class MoviesDetailedFragment : Fragment(), View.OnClickListener {
                             moviePlot.visibility = View.GONE
                             releasedYear.visibility = View.GONE
                             posterImage.visibility = View.GONE
+                            favButton.visibility = View.GONE
                             movieTitle.text =
                                 getString(R.string.error_message).plus(movieDetails.message)
                         }

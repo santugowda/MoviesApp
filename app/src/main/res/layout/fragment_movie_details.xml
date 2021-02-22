@@ -96,6 +96,8 @@
                     android:background="@color/red"
                     android:clickable="true"
                     android:focusable="true"
+                    android:visibility="visible"
+                    android:layout_marginTop="@dimen/fab_margin"
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
                     android:text="@string/add_to_favorites" />
