@@ -60,13 +60,14 @@ class MovieSearchListAdapter(
                         .into(imgPoster)
                 }
 
-                favMovieList.getOrNull(0).let {
-                    if(it?.title == movieSearch.title) {
-                        favouriteIcon.visibility = View.VISIBLE
-                    } else {
-                        favouriteIcon.visibility = View.GONE
-                    }
-                }
+//                favMovieList.getOrNull(0).let {
+//                    if(it?.title == movieSearch.title) {
+//                        favouriteIcon.visibility = View.VISIBLE
+//                    } else {
+//                        favouriteIcon.visibility = View.GONE
+//                    }
+//                }
+
 
                 setOnClickListener {
                     onMovieSelected.onUserItemClick(movieSearch)

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.moviesapp.MainActivity">
+    tools:context="com.moviesapp.ui.activities.MainActivity">
 
     <include layout="@layout/content_main" />
 

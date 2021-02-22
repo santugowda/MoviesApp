@@ -1,14 +1,10 @@
-package com.moviesapp
+package com.moviesapp.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import com.example.moviesapp.R
-import com.moviesapp.ui.activities.FavoriteActivity
 
 class MainActivity : AppCompatActivity() {
 

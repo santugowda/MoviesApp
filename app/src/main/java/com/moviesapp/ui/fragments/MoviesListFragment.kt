@@ -54,10 +54,11 @@ class MoviesListFragment : Fragment(), MovieSearchListAdapter.OnMovieSelected {
         appBarView = view.findViewById(R.id.appBarView)
         moviesSharedPref = MoviesSharedPref.getInstance(requireActivity())
         moviesViewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
-        moviesViewModel.allFavMovies.observe(requireActivity(), Observer { favList ->
-            favMovieList = favList as ArrayList<MovieDetails>
-        })
+//        moviesViewModel.allFavMovies.observe(requireActivity(), Observer { favList ->
+//            favMovieList = favList as ArrayList<MovieDetails>
+//        })
 
+        favMovieList = moviesViewModel.allFavMovieListOnDemand as ArrayList<MovieDetails>
         moviesSearchListAdapter = MovieSearchListAdapter(favMovieList,this )
 
         val moviesSearchRecyclerView: RecyclerView = view.findViewById(R.id.movieSearchRecyclerView)
