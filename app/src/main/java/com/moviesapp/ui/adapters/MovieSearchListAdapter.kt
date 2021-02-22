@@ -14,10 +14,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviesapp.R
+import com.moviesapp.model.MovieDetails
+import com.moviesapp.model.MovieSearch
 import com.moviesapp.model.Search
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
-class MovieSearchListAdapter(private val onMovieSelected: OnMovieSelected) :
+class MovieSearchListAdapter(
+    private val favMovieList: ArrayList<MovieDetails>,
+    private val onMovieSelected: OnMovieSelected) :
     PagedListAdapter<Search, MovieSearchListAdapter.MoviesListViewHolder>(
         usersDiffCallback
     ) {
@@ -25,6 +29,11 @@ class MovieSearchListAdapter(private val onMovieSelected: OnMovieSelected) :
 
     interface OnMovieSelected {
         fun onUserItemClick(movieSearch: Search)
+    }
+
+    fun addAll(newSearch: List<MovieDetails>) {
+        favMovieList.addAll(newSearch)
+        notifyItemRangeInserted(favMovieList.size, newSearch.size)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesListViewHolder {
@@ -51,9 +60,13 @@ class MovieSearchListAdapter(private val onMovieSelected: OnMovieSelected) :
                         .into(imgPoster)
                 }
 
-//                favStar.setOnClickListener {
-//
-//                }
+                favMovieList.getOrNull(0).let {
+                    if(it?.title == movieSearch.title) {
+                        favouriteIcon.visibility = View.VISIBLE
+                    } else {
+                        favouriteIcon.visibility = View.GONE
+                    }
+                }
 
                 setOnClickListener {
                     onMovieSelected.onUserItemClick(movieSearch)

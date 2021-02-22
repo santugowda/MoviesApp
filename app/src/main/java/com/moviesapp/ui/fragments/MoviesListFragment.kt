@@ -16,24 +16,27 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesapp.R
 import com.google.android.material.appbar.AppBarLayout
+import com.moviesapp.model.MovieDetails
+import com.moviesapp.model.MovieSearch
 import com.moviesapp.model.Search
 import com.moviesapp.ui.adapters.MovieSearchListAdapter
 import com.moviesapp.utils.MoviesSharedPref
 import com.moviesapp.viewmodel.MovieSearchListViewModel
+import com.moviesapp.viewmodel.MoviesViewModel
 import kotlinx.android.synthetic.main.fragment_movies_list.*
 
 
 class MoviesListFragment : Fragment(), MovieSearchListAdapter.OnMovieSelected {
 
     private lateinit var movieSearchListViewModel: MovieSearchListViewModel
+    private lateinit var moviesViewModel: MoviesViewModel
     private var searchInputView: EditText? = null
     private var searchContainerView: View? = null
     private var searchStartView: View? = null
     private var appBarView: AppBarLayout? = null
     private var moviesSearchListAdapter: MovieSearchListAdapter? = null
     private lateinit var moviesSharedPref: MoviesSharedPref
-    private var linearLayoutManager: LinearLayoutManager? = null
-    var state: Parcelable? = null
+    private var favMovieList : ArrayList<MovieDetails> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,12 +53,16 @@ class MoviesListFragment : Fragment(), MovieSearchListAdapter.OnMovieSelected {
         searchStartView = view.findViewById(R.id.searchStartView)
         appBarView = view.findViewById(R.id.appBarView)
         moviesSharedPref = MoviesSharedPref.getInstance(requireActivity())
+        moviesViewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
+        moviesViewModel.allFavMovies.observe(requireActivity(), Observer { favList ->
+            favMovieList = favList as ArrayList<MovieDetails>
+        })
 
-        moviesSearchListAdapter = MovieSearchListAdapter(this)
+        moviesSearchListAdapter = MovieSearchListAdapter(favMovieList,this )
 
         val moviesSearchRecyclerView: RecyclerView = view.findViewById(R.id.movieSearchRecyclerView)
 
-        linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         moviesSearchRecyclerView.layoutManager = linearLayoutManager
         moviesSearchRecyclerView.adapter = moviesSearchListAdapter
         initSearchField()

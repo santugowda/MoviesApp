@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.moviesapp.model.Search
+import com.moviesapp.network.base.NetworkResponse
 import com.moviesapp.repository.MovieSearchDataSource
 import com.moviesapp.repository.MovieSearchDataSourceFactory
 import java.util.concurrent.Executors
@@ -37,7 +38,6 @@ class MovieSearchListViewModel : ViewModel() {
                 .setFetchExecutor(executor)
                 .build()
         }
-
     }
 
 }

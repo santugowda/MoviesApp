@@ -1,10 +1,19 @@
 package com.moviesapp.model
 
-import android.media.Rating
+import androidx.annotation.NonNull
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "moviesDetails")
 data class MovieDetails(
+    @PrimaryKey
+    @NonNull
+    @SerializedName("imdbID")
+    @Expose
+    var imdbID: String,
+
     @SerializedName("Title")
     @Expose
     var title: String? = null,
@@ -61,9 +70,9 @@ data class MovieDetails(
     @Expose
     var poster: String? = null,
 
-    @SerializedName("Ratings")
-    @Expose
-    var ratings: List<Rating>? = null,
+//    @SerializedName("Ratings")
+//    @Expose
+//    var ratings: List<Rating>? = null,
 
     @SerializedName("Metascore")
     @Expose
@@ -76,10 +85,6 @@ data class MovieDetails(
     @SerializedName("imdbVotes")
     @Expose
     var imdbVotes: String? = null,
-
-    @SerializedName("imdbID")
-    @Expose
-    var imdbID: String? = null,
 
     @SerializedName("Type")
     @Expose

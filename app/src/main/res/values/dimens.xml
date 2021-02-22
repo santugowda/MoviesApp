@@ -14,4 +14,5 @@
     <dimen name="marginTop_padding">10dp</dimen>
     <dimen name="textSize">16sp</dimen>
     <dimen name="titleTextSize">30sp</dimen>
+    <dimen name="textTitle">20sp</dimen>
 </resources>

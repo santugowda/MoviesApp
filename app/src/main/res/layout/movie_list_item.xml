@@ -55,12 +55,13 @@
             </LinearLayout>
 
             <ImageButton
-                android:id="@+id/favioStar"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:id="@+id/favouriteIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="#00ffffff"
-                android:src="@android:drawable/btn_star"
-                />
+                android:layout_marginEnd="@dimen/fab_margin"
+                android:visibility="gone"
+                android:src="@drawable/ic_faved" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
