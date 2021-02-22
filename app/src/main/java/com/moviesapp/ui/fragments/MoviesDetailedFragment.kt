@@ -13,15 +13,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviesapp.R
-import com.moviesapp.db.MovieDetailsDao
+import com.google.android.material.snackbar.Snackbar
 import com.moviesapp.model.MovieDetails
 import com.moviesapp.network.base.NetworkResponse
 import com.moviesapp.viewmodel.MoviesViewModel
 import kotlinx.android.synthetic.main.fragment_movie_details.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 class MoviesDetailedFragment : Fragment(), View.OnClickListener {
@@ -30,12 +26,15 @@ class MoviesDetailedFragment : Fragment(), View.OnClickListener {
     private lateinit var movieDetailsToStore: MovieDetails
     private lateinit var favButton: Button
     lateinit var listValue: List<MovieDetails>
+    lateinit var rootView: View
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_movie_details, container, false)
+        rootView = inflater.inflate(R.layout.fragment_movie_details, container, false)
+        return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -133,7 +132,7 @@ class MoviesDetailedFragment : Fragment(), View.OnClickListener {
         override fun onPostExecute(result: Void?) {
             super.onPostExecute(result)
             favButton.text = requireActivity().getString(R.string.added_to_favourites)
-            Toast.makeText(requireActivity(), "Added to Favorites", Toast.LENGTH_SHORT).show()
+            Snackbar.make(rootView, "Added to Favorites", Snackbar.LENGTH_LONG).show()
         }
     }
 
@@ -149,7 +148,7 @@ class MoviesDetailedFragment : Fragment(), View.OnClickListener {
         override fun onPostExecute(result: Void?) {
             super.onPostExecute(result)
             favButton.text = requireActivity().getString(R.string.add_to_favorites)
-            Toast.makeText(requireActivity(), "Removed from Favorites", Toast.LENGTH_SHORT).show()
+            Snackbar.make(rootView, "Removed from Favorites", Snackbar.LENGTH_LONG).show()
         }
     }
 }
